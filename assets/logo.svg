@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 240" fill="none">
+  <!-- PEE YEM Monogram Icon ("pm" continuous ribbon) -->
+  <g transform="translate(60, 20)">
+    <!-- Left Top Arc (Yellow/Gold) -->
+    <path d="M 140 70 A 55 55 0 0 0 30 70" stroke="#FFB800" stroke-width="19" stroke-linecap="round" fill="none"/>
+    <!-- Left Bottom Arc (Cyan Blue) -->
+    <path d="M 30 70 A 55 55 0 0 0 135 105" stroke="#00AEEF" stroke-width="19" stroke-linecap="round" fill="none"/>
+    <!-- Center Stem (Emerald Green) -->
+    <path d="M 140 70 L 140 125" stroke="#00A651" stroke-width="19" stroke-linecap="round" fill="none"/>
+    <!-- Right Arch (Sunset Orange) -->
+    <path d="M 140 70 A 55 55 0 0 1 250 70" stroke="#FF6B00" stroke-width="19" stroke-linecap="round" fill="none"/>
+  </g>
+
+  <!-- Brand Typography -->
+  <text x="200" y="185" text-anchor="middle" font-family="'Plus Jakarta Sans', 'Montserrat', 'Inter', sans-serif" font-size="34" font-weight="800" letter-spacing="0.18em" fill="#0F172A">PEE YEM</text>
+  <text x="200" y="218" text-anchor="middle" font-family="'Plus Jakarta Sans', 'Montserrat', 'Inter', sans-serif" font-size="22" font-weight="500" letter-spacing="0.32em" fill="#334155">HOLIDAYS</text>
+</svg>

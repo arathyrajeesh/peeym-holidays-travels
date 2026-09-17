@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 160" fill="none">
+  <!-- Left Top Arc (Yellow/Gold) -->
+  <path d="M 140 65 A 55 55 0 0 0 30 65" stroke="#FFB800" stroke-width="20" stroke-linecap="round" fill="none"/>
+  <!-- Left Bottom Arc (Cyan Blue) -->
+  <path d="M 30 65 A 55 55 0 0 0 135 100" stroke="#00AEEF" stroke-width="20" stroke-linecap="round" fill="none"/>
+  <!-- Center Stem (Emerald Green) -->
+  <path d="M 140 65 L 140 120" stroke="#00A651" stroke-width="20" stroke-linecap="round" fill="none"/>
+  <!-- Right Arch (Sunset Orange) -->
+  <path d="M 140 65 A 55 55 0 0 1 250 65" stroke="#FF6B00" stroke-width="20" stroke-linecap="round" fill="none"/>
+</svg>
