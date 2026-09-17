@@ -330,7 +330,7 @@
           box-shadow: var(--shadow-orange-glow) !important;
         }
 
-        /* Journey Item 1 Automatic Crossfade Animation */
+        /* Journey Item 1 Multi-Image Automatic Crossfade Animation */
         .journey_image_wrap {
           position: relative;
           width: 100%;
@@ -347,24 +347,46 @@
           height: 100% !important;
           object-fit: cover !important;
           display: block;
+          will-change: opacity, transform;
+          animation-duration: 16s;
+          animation-iteration-count: infinite;
+          animation-timing-function: ease-in-out;
         }
 
-        .journey_image_wrap .journey_image.is-default {
-          animation: journeyImageCycle1 7s infinite ease-in-out;
-          z-index: 1;
+        .journey_image_wrap .journey_image.is-img-1 {
+          animation-name: journeySlide1;
+          z-index: 4;
         }
 
-        .journey_image_wrap .journey_image.is-hover {
-          animation: journeyImageCycle2 7s infinite ease-in-out;
+        .journey_image_wrap .journey_image.is-img-2 {
+          animation-name: journeySlide2;
+          z-index: 3;
+        }
+
+        .journey_image_wrap .journey_image.is-img-3 {
+          animation-name: journeySlide3;
           z-index: 2;
         }
 
-        @keyframes journeyImageCycle1 {
-          0%, 42% {
+        .journey_image_wrap .journey_image.is-img-4 {
+          animation-name: journeySlide4;
+          z-index: 1;
+        }
+
+        @keyframes journeySlide1 {
+          0% {
             opacity: 1;
             transform: scale(1);
           }
-          50%, 92% {
+          20% {
+            opacity: 1;
+            transform: scale(1.03);
+          }
+          25% {
+            opacity: 0;
+            transform: scale(1.05);
+          }
+          95% {
             opacity: 0;
             transform: scale(1.05);
           }
@@ -374,14 +396,64 @@
           }
         }
 
-        @keyframes journeyImageCycle2 {
-          0%, 42% {
+        @keyframes journeySlide2 {
+          0%, 20% {
+            opacity: 0;
+            transform: scale(1);
+          }
+          25% {
+            opacity: 1;
+            transform: scale(1.005);
+          }
+          45% {
+            opacity: 1;
+            transform: scale(1.03);
+          }
+          50% {
             opacity: 0;
             transform: scale(1.05);
           }
-          50%, 92% {
-            opacity: 1;
+          100% {
+            opacity: 0;
+            transform: scale(1.05);
+          }
+        }
+
+        @keyframes journeySlide3 {
+          0%, 45% {
+            opacity: 0;
             transform: scale(1);
+          }
+          50% {
+            opacity: 1;
+            transform: scale(1.005);
+          }
+          70% {
+            opacity: 1;
+            transform: scale(1.03);
+          }
+          75% {
+            opacity: 0;
+            transform: scale(1.05);
+          }
+          100% {
+            opacity: 0;
+            transform: scale(1.05);
+          }
+        }
+
+        @keyframes journeySlide4 {
+          0%, 70% {
+            opacity: 0;
+            transform: scale(1);
+          }
+          75% {
+            opacity: 1;
+            transform: scale(1.005);
+          }
+          95% {
+            opacity: 1;
+            transform: scale(1.03);
           }
           100% {
             opacity: 0;
@@ -2944,10 +3016,16 @@ a,
               <div class="journey_image_wrap">
                 <img
                   src="assets/journey-travel-packages.jpg"
-                  loading="lazy" width="325" height="400" alt="Travel Packages" class="journey_image is-default" />
+                  loading="lazy" width="325" height="400" alt="Travel Packages" class="journey_image is-img-1" />
                 <img
                   src="assets/journey-travel-packages-hover.jpg"
-                  loading="lazy" width="325" height="400" alt="Kerala Houseboat Backwaters" class="journey_image is-hover" />
+                  loading="lazy" width="325" height="400" alt="Kerala Houseboat Backwaters" class="journey_image is-img-2" />
+                <img
+                  src="assets/journey-travel-packages-3.jpg"
+                  loading="lazy" width="325" height="400" alt="Family Vacation Heritage Sightseeing" class="journey_image is-img-3" />
+                <img
+                  src="assets/journey-travel-packages-4.jpg"
+                  loading="lazy" width="325" height="400" alt="Kerala Sunset Cruise" class="journey_image is-img-4" />
               </div>
               <div class="journey_item-content">
                 <div class="heading-style-h5">Travel Packages</div>
