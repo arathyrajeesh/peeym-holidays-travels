@@ -2760,8 +2760,234 @@ a,
         }
 
 
-        .w-nav-overlay {
+        /* ---------------------------------------------------- */
+        /* Services 3D Coverflow Carousel Section               */
+        /* ---------------------------------------------------- */
+        .section_services_carousel {
+          position: relative;
+          background: #FFFFFF;
+          padding: 6.5rem 1.5rem 6.5rem;
+          overflow: hidden;
+          font-family: 'Plus Jakarta Sans', 'Montserrat', -apple-system, sans-serif;
+        }
+
+        .services_carousel_header {
+          text-align: center;
+          max-width: 800px;
+          margin: 0 auto 3.5rem;
+        }
+
+        .services_carousel_title {
+          font-size: clamp(2.4rem, 4.5vw, 3.5rem);
+          color: #0F172A;
+          margin: 0 0 0.85rem 0;
+          line-height: 1.15;
+          font-weight: 400;
+          letter-spacing: -0.02em;
+        }
+
+        .services_carousel_title span {
+          font-weight: 800;
+          color: #0F172A;
+        }
+
+        .services_carousel_subtitle {
+          font-size: clamp(1rem, 1.3vw, 1.15rem);
+          color: #64748B;
+          font-weight: 400;
+          margin: 0 auto;
+          max-width: 620px;
+          line-height: 1.55;
+        }
+
+        /* 3D Carousel Stage */
+        .services_carousel_stage {
+          position: relative;
+          width: 100%;
+          max-width: 1280px;
+          height: 440px;
+          margin: 0 auto;
+          perspective: 1200px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          touch-action: pan-y;
+          user-select: none;
+        }
+
+        .services_carousel_card {
+          position: absolute;
+          width: 680px;
+          max-width: 86vw;
+          height: 390px;
+          border-radius: 28px;
+          overflow: hidden;
+          cursor: pointer;
+          transition: transform 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+                      opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+                      filter 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+                      box-shadow 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+          box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.35);
+          will-change: transform, opacity;
+          background: #0F172A;
+        }
+
+        .services_carousel_card img {
+          position: absolute;
           top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          pointer-events: none;
+          transition: transform 0.8s ease;
+        }
+
+        .services_carousel_card:hover img {
+          transform: scale(1.04);
+        }
+
+        .services_card_overlay {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: linear-gradient(180deg, rgba(15, 23, 42, 0.28) 0%, rgba(15, 23, 42, 0.72) 100%);
+          pointer-events: none;
+        }
+
+        .services_card_content {
+          position: relative;
+          z-index: 2;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+          padding: 2.5rem 2.25rem;
+          color: #FFFFFF;
+          opacity: 0;
+          transform: translateY(18px);
+          transition: opacity 0.4s ease 0.15s, transform 0.4s ease 0.15s;
+          pointer-events: none;
+        }
+
+        .services_carousel_card.is-active .services_card_content {
+          opacity: 1;
+          transform: translateY(0);
+          pointer-events: auto;
+        }
+
+        .services_card_title {
+          font-size: clamp(1.8rem, 2.6vw, 2.3rem);
+          font-weight: 800;
+          color: #FFFFFF;
+          margin: 0 0 0.6rem 0;
+          line-height: 1.2;
+          letter-spacing: -0.015em;
+          text-shadow: 0 2px 12px rgba(0, 0, 0, 0.45);
+        }
+
+        .services_card_desc {
+          font-size: clamp(0.95rem, 1.15vw, 1.05rem);
+          color: rgba(255, 255, 255, 0.95);
+          margin: 0 0 1.6rem 0;
+          max-width: 480px;
+          line-height: 1.45;
+          text-shadow: 0 1px 8px rgba(0, 0, 0, 0.4);
+        }
+
+        .services_card_btn {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          background: #00AEEF;
+          color: #FFFFFF !important;
+          font-size: 0.95rem;
+          font-weight: 600;
+          padding: 0.78rem 2.1rem;
+          border-radius: 8px;
+          text-decoration: none !important;
+          box-shadow: 0 6px 18px rgba(0, 174, 239, 0.42);
+          transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+          cursor: pointer;
+          pointer-events: auto;
+        }
+
+        .services_card_btn:hover {
+          background: #0098D4;
+          transform: translateY(-2px);
+          box-shadow: 0 10px 26px rgba(0, 174, 239, 0.6);
+        }
+
+        /* Nav Controls */
+        .services_carousel_controls {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 1.8rem;
+          margin-top: 2.5rem;
+        }
+
+        .services_nav_arrow {
+          background: none;
+          border: none;
+          color: #64748B;
+          cursor: pointer;
+          padding: 0.6rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: all 0.25s ease;
+          border-radius: 50%;
+        }
+
+        .services_nav_arrow:hover {
+          color: #0F172A;
+          transform: scale(1.18);
+        }
+
+        .services_nav_arrow:active {
+          transform: scale(0.92);
+        }
+
+        .services_nav_arrow svg {
+          width: 30px;
+          height: 30px;
+          stroke: currentColor;
+          stroke-width: 2.2;
+        }
+
+        @media screen and (max-width: 991px) {
+          .services_carousel_stage {
+            height: 380px;
+          }
+          .services_carousel_card {
+            height: 350px;
+            width: 580px;
+          }
+        }
+
+        @media screen and (max-width: 767px) {
+          .section_services_carousel {
+            padding: 4rem 1rem 4.5rem;
+          }
+          .services_carousel_header {
+            margin-bottom: 2.2rem;
+          }
+          .services_carousel_stage {
+            height: 340px;
+          }
+          .services_carousel_card {
+            height: 320px;
+            border-radius: 20px;
+            width: 88vw;
+          }
+          .services_card_content {
+            padding: 1.5rem 1.25rem;
+          }
         }
       </style>
     </div>
@@ -2771,6 +2997,9 @@ a,
         <div class="nav_container">
           <nav role="navigation" id="w-node-_7c2f5785-5165-eb9b-72a5-6b0ca9327214-a932720f" class="nav_menu w-nav-menu">
             <div class="nav_menu-content">
+              <a href="#services" class="nav_menu_link w-inline-block">
+                <div class="text-size-caption-small-up is-mobile-h5">Services</div>
+              </a>
               <a href="#discover" class="nav_menu_link w-inline-block">
                 <div class="text-size-caption-small-up is-mobile-h5">About</div>
               </a>
@@ -2850,104 +3079,112 @@ a,
           </div>
         </div>
       </div>
-      <div data-nav="dark" data-w-id="58036def-9b17-169e-3dc4-f0ee90f2a31b" class="section_home-transition is-static">
-        <div class="padding-global padding-section-large is-relative-11 is-xxl">
-          <div class="container-max">
-            <div class="home-transition_content">
-              <div class="heading-style-h1 is-mobile-48 is-stroke-white">Travel designed <br />around you</div>
+      <!-- Our Services 3D Coverflow Carousel Section -->
+      <section id="services" class="section_services_carousel" data-nav="white">
+        <div class="services_carousel_header">
+          <h2 class="services_carousel_title">Our <span>Services</span></h2>
+          <p class="services_carousel_subtitle">Comprehensive travel solutions tailored to meet your every need</p>
+        </div>
+
+        <div class="services_carousel_stage" id="servicesStage">
+          <!-- Card 1: Flight Booking (Default center active card) -->
+          <div class="services_carousel_card">
+            <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=1200&q=85"
+              alt="Flight Booking" loading="lazy" />
+            <div class="services_card_overlay"></div>
+            <div class="services_card_content">
+              <h3 class="services_card_title">Flight Booking</h3>
+              <p class="services_card_desc">Book flights effortlessly with the best deals and reliability</p>
+              <a href="flight-booking.html" class="services_card_btn">Learn More</a>
+            </div>
+          </div>
+
+          <!-- Card 2: Bus Booking -->
+          <div class="services_carousel_card">
+            <img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1200&q=85"
+              alt="Bus Booking" loading="lazy" />
+            <div class="services_card_overlay"></div>
+            <div class="services_card_content">
+              <h3 class="services_card_title">Bus Booking</h3>
+              <p class="services_card_desc">Comfortable luxury sleeper buses, intercity routes & private group charters</p>
+              <a href="bus-booking.html" class="services_card_btn">Learn More</a>
+            </div>
+          </div>
+
+          <!-- Card 3: Train Ticket Booking -->
+          <div class="services_carousel_card">
+            <img src="https://images.unsplash.com/photo-1474487548417-781cb71495f3?auto=format&fit=crop&w=1200&q=85"
+              alt="Train Ticket Booking" loading="lazy" />
+            <div class="services_card_overlay"></div>
+            <div class="services_card_content">
+              <h3 class="services_card_title">Train Ticket Booking</h3>
+              <p class="services_card_desc">Hassle-free train ticket reservations, tatkal bookings & confirmed seat assistance</p>
+              <a href="train-booking.html" class="services_card_btn">Learn More</a>
+            </div>
+          </div>
+
+          <!-- Card 4: Holiday Packages -->
+          <div class="services_carousel_card">
+            <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1200&q=85"
+              alt="Holiday Packages" loading="lazy" />
+            <div class="services_card_overlay"></div>
+            <div class="services_card_content">
+              <h3 class="services_card_title">Holiday Packages</h3>
+              <p class="services_card_desc">Curated vacation packages tailored for unforgettable global experiences</p>
+              <a href="holiday-packages.html" class="services_card_btn">Learn More</a>
+            </div>
+          </div>
+
+          <!-- Card 5: Luxury Resorts & Stays -->
+          <div class="services_carousel_card">
+            <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&w=1200&q=85"
+              alt="Luxury Resorts & Stays" loading="lazy" />
+            <div class="services_card_overlay"></div>
+            <div class="services_card_content">
+              <h3 class="services_card_title">Luxury Resorts & Stays</h3>
+              <p class="services_card_desc">Handpicked 5-star hotels, luxury villas, and boutique retreats</p>
+              <a href="#Contact-Form" class="services_card_btn">More Details</a>
+            </div>
+          </div>
+
+          <!-- Card 6: Corporate Travel -->
+          <div class="services_carousel_card">
+            <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1200&q=85"
+              alt="Corporate Travel" loading="lazy" />
+            <div class="services_card_overlay"></div>
+            <div class="services_card_content">
+              <h3 class="services_card_title">Corporate Travel</h3>
+              <p class="services_card_desc">Efficient, reliable travel management for businesses and executives</p>
+              <a href="#Contact-Form" class="services_card_btn">More Details</a>
+            </div>
+          </div>
+
+          <!-- Card 7: Visa & Documentation -->
+          <div class="services_carousel_card">
+            <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=1200&q=85"
+              alt="Visa & Documentation" loading="lazy" />
+            <div class="services_card_overlay"></div>
+            <div class="services_card_content">
+              <h3 class="services_card_title">Visa & Documentation</h3>
+              <p class="services_card_desc">Fast-track tourist & business visa processing with end-to-end support</p>
+              <a href="#Contact-Form" class="services_card_btn">More Details</a>
             </div>
           </div>
         </div>
-        <div class="grid w-embed"><svg width="100%" height="100%" preserveAspectRatio="none" viewBox="0 0 1440 724"
-            fill="none" xmlns="http://www.w3.org/2000/svg">
-            <g opacity="0.2">
-              <path d="M386 -191H385.5V357H386H386.5V-191H386ZM52 357H52.5V-191H52H51.5V357H52Z" fill="#C2C6CA" />
-              <path d="M720 -191H719.5V357H720H720.5V-191H720ZM386 357H386.5V-191H386H385.5V357H386Z" fill="#C2C6CA" />
-              <path d="M1054 -191H1053.5V357H1054H1054.5V-191H1054ZM720 357H720.5V-191H720H719.5V357H720Z"
-                fill="#C2C6CA" />
-              <path d="M1388 -191H1387.5V357H1388H1388.5V-191H1388ZM1054 357H1054.5V-191H1054H1053.5V357H1054Z"
-                fill="#C2C6CA" />
-              <path d="M52 365H1388V366H52V365Z" fill="#C2C6CA" />
-              <path d="M386 374H385.5V922H386H386.5V374H386ZM52 922H52.5V374H52H51.5V922H52Z" fill="#C2C6CA" />
-              <path d="M720 374H719.5V922H720H720.5V374H720ZM386 922H386.5V374H386H385.5V922H386Z" fill="#C2C6CA" />
-              <path d="M1054 374H1053.5V922H1054H1054.5V374H1054ZM720 922H720.5V374H720H719.5V922H720Z"
-                fill="#C2C6CA" />
-              <path d="M1388 374H1387.5V922H1388H1388.5V374H1388ZM1054 922H1054.5V374H1054H1053.5V922H1054Z"
-                fill="#C2C6CA" />
-            </g>
-          </svg></div><img
-          src="https://cdn.prod.website-files.com/697797a5e8e563920247d163/698387dc04a720903f6ca357_transition-map.svg"
-          loading="lazy" width="699" height="724" alt="" class="home-transition_img-right" /><img
-          src="https://cdn.prod.website-files.com/697797a5e8e563920247d163/6988e6fbca88694aea91a751_transition-bg-2.avif"
-          loading="lazy" width="2048" height="1030" alt=""
-          srcset="https://cdn.prod.website-files.com/697797a5e8e563920247d163/6988e6fbca88694aea91a751_transition-bg-2-p-500.avif 500w, https://cdn.prod.website-files.com/697797a5e8e563920247d163/6988e6fbca88694aea91a751_transition-bg-2-p-800.avif 800w, https://cdn.prod.website-files.com/697797a5e8e563920247d163/6988e6fbca88694aea91a751_transition-bg-2-p-1080.avif 1080w, https://cdn.prod.website-files.com/697797a5e8e563920247d163/6988e6fbca88694aea91a751_transition-bg-2.avif 4096w"
-          sizes="100vw" class="home-transition_bg-static" />
-      </div>
-      <div data-nav="white" data-w-id="e4fd6282-5ad1-cc80-8ec6-d04975afd66d" class="section_travel">
-        <div class="padding-global padding-0">
-          <div class="container-max">
-            <div class="travel_grid-wrapper">
-              <div class="travel_grid">
-                <div class="travel_grid-item"><img width="750" height="1000" alt=""
-                    src="https://cdn.prod.website-files.com/697797a5e8e563920247d163/697e874dee65d768b7d1e37e_grid1.avif"
-                    loading="lazy"
-                    srcset="https://cdn.prod.website-files.com/697797a5e8e563920247d163/697e874dee65d768b7d1e37e_grid1-p-500.avif 500w, https://cdn.prod.website-files.com/697797a5e8e563920247d163/697e874dee65d768b7d1e37e_grid1-p-800.avif 800w, https://cdn.prod.website-files.com/697797a5e8e563920247d163/697e874dee65d768b7d1e37e_grid1.avif 1500w"
-                    sizes="(max-width: 767px) 100vw, 750px" class="travel_grid-item-img" />
-                  <div class="travel_grid-item-bottom is-pb-mobile-small"><a href="#Contact-Form"
-                      class="button is-secondary is-blur w-inline-block">
-                      <div>Explore</div>
-                      <div class="button-icon w-embed"><svg width="100%" height="100%" viewBox="0 0 16 16" fill="none"
-                          xmlns="http://www.w3.org/2000/svg">
-                          <path
-                            d="M13.5026 7.05623L7.05882 13.5L6 12.4412L12.4438 5.9974H6.76429V4.5H15V12.7357H13.5026V7.05623Z"
-                            fill="white" />
-                        </svg></div>
-                    </a>
-                    <div class="travel_grid-item-bottom-line">
-                      <h3 class="heading-style-h3">Private <br />travel</h3>
-                      <div class="travel_grid-item-bottom-text">
-                        <div class="text-size-medium">Thoughtfully planned travel for individuals and families.
-                          Every
-                          detail handled with care, discretion, and flexibility.</div>
-                      </div>
-                    </div>
-                    <div class="travel_grid-item-bottom-bg"></div>
-                  </div>
-                </div>
-                <div class="travel_grid-item"><img width="960" height="1264" alt=""
-                    src="https://cdn.prod.website-files.com/697797a5e8e563920247d163/697e874d57c07e0b02d6c88e_grid2.avif"
-                    loading="lazy"
-                    srcset="https://cdn.prod.website-files.com/697797a5e8e563920247d163/697e874d57c07e0b02d6c88e_grid2-p-500.avif 500w, https://cdn.prod.website-files.com/697797a5e8e563920247d163/697e874d57c07e0b02d6c88e_grid2-p-800.avif 800w, https://cdn.prod.website-files.com/697797a5e8e563920247d163/697e874d57c07e0b02d6c88e_grid2-p-1080.avif 1080w, https://cdn.prod.website-files.com/697797a5e8e563920247d163/697e874d57c07e0b02d6c88e_grid2.avif 1920w"
-                    sizes="(max-width: 991px) 100vw, 960px" class="travel_grid-item-img" />
-                  <div class="travel_grid-item-bottom is-pb-mobile-small"><a href="#Contact-Form"
-                      class="button is-secondary is-blur w-inline-block">
-                      <div>Explore</div>
-                      <div class="button-icon w-embed"><svg width="100%" height="100%" viewBox="0 0 16 16" fill="none"
-                          xmlns="http://www.w3.org/2000/svg">
-                          <path
-                            d="M13.5026 7.05623L7.05882 13.5L6 12.4412L12.4438 5.9974H6.76429V4.5H15V12.7357H13.5026V7.05623Z"
-                            fill="white" />
-                        </svg></div>
-                    </a>
-                    <div class="travel_grid-item-bottom-line">
-                      <h3 class="heading-style-h3">Corporate <br />travel</h3>
-                      <div class="travel_grid-item-bottom-text">
-                        <div class="text-size-medium">Efficient, reliable travel management for businesses and
-                          executives who need things done right</div>
-                      </div>
-                    </div>
-                    <div class="travel_grid-item-bottom-bg"></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div><img
-          src="https://cdn.prod.website-files.com/697797a5e8e563920247d163/6988ef2c1f674b7da92dbfce_remove1%201.avif"
-          sizes="100vw" width="4096" height="603" alt=""
-          srcset="https://cdn.prod.website-files.com/697797a5e8e563920247d163/6988ef2c1f674b7da92dbfce_remove1%201-p-500.avif 500w, https://cdn.prod.website-files.com/697797a5e8e563920247d163/6988ef2c1f674b7da92dbfce_remove1%201-p-800.avif 800w, https://cdn.prod.website-files.com/697797a5e8e563920247d163/6988ef2c1f674b7da92dbfce_remove1%201-p-1080.avif 1080w, https://cdn.prod.website-files.com/697797a5e8e563920247d163/6988ef2c1f674b7da92dbfce_remove1%201-p-1600.avif 1600w, https://cdn.prod.website-files.com/697797a5e8e563920247d163/6988ef2c1f674b7da92dbfce_remove1%201-p-2000.avif 2000w, https://cdn.prod.website-files.com/697797a5e8e563920247d163/6988ef2c1f674b7da92dbfce_remove1%201.avif 8192w"
-          class="travel_bottom-bg" />
-      </div>
+
+        <div class="services_carousel_controls">
+          <button class="services_nav_arrow" id="servicesPrevBtn" aria-label="Previous service">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+          </button>
+          <button class="services_nav_arrow" id="servicesNextBtn" aria-label="Next service">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </button>
+        </div>
+      </section>
       <!-- Holiday Destinations Gallery Section -->
       <section id="gallery" class="section_gallery" data-nav="white">
         <div class="gallery_container">
@@ -3802,42 +4039,6 @@ a,
               <div>
                 <div class="footer-col-title">CONTACT & BOOKINGS</div>
                 <div class="footer-accent-bar"></div>
-                <!-- Travel Package Booking -->
-                <div style="margin-bottom: 0.85rem;">
-                  <div
-                    style="font-size: 0.72rem; text-transform: uppercase; font-weight: 700; color: #FFB800; letter-spacing: 0.08em; margin-bottom: 0.25rem;">
-                    🌴 Travel & Holidays
-                  </div>
-                  <div class="footer-contact-row" style="margin-bottom: 0;">
-                    <svg class="footer-contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                      stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                      <path
-                        d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
-                      </path>
-                    </svg>
-                    <a href="tel:+919562922974"
-                      style="color: #FF6B00; font-weight: 700; font-size: 0.98rem; text-decoration: none;">+91 95629
-                      22974</a>
-                  </div>
-                </div>
-                <!-- Train & Bus Booking -->
-                <div style="margin-bottom: 0.85rem;">
-                  <div
-                    style="font-size: 0.72rem; text-transform: uppercase; font-weight: 700; color: #00AEEF; letter-spacing: 0.08em; margin-bottom: 0.25rem;">
-                    🚆 🚌 Train & Bus Tickets
-                  </div>
-                  <div class="footer-contact-row" style="margin-bottom: 0;">
-                    <svg class="footer-contact-icon" viewBox="0 0 24 24" fill="none" stroke="#00AEEF" stroke-width="2.2"
-                      stroke-linecap="round" stroke-linejoin="round">
-                      <path
-                        d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z">
-                      </path>
-                    </svg>
-                    <a href="tel:+919207922974"
-                      style="color: #00AEEF; font-weight: 700; font-size: 0.98rem; text-decoration: none;">+91 92079
-                      22974</a>
-                  </div>
-                </div>
                 <!-- Hours -->
                 <div class="footer-contact-row">
                   <svg class="footer-contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -4490,6 +4691,169 @@ a,
       window.addEventListener('resize', updateHeroFade, { passive: true });
       document.addEventListener('DOMContentLoaded', updateHeroFade);
       updateHeroFade();
+    })();
+
+    // ----------------------------------------------------
+    // Our Services 3D Coverflow Carousel
+    // ----------------------------------------------------
+    (function () {
+      const stage = document.getElementById('servicesStage');
+      const prevBtn = document.getElementById('servicesPrevBtn');
+      const nextBtn = document.getElementById('servicesNextBtn');
+      if (!stage) return;
+
+      const cards = Array.from(stage.querySelectorAll('.services_carousel_card'));
+      let currentIndex = 0;
+      let autoPlayTimer = null;
+      let isHovered = false;
+
+      function updateCards() {
+        const total = cards.length;
+        cards.forEach((card, index) => {
+          let offset = index - currentIndex;
+          // Shortest cyclic distance
+          if (offset > total / 2) offset -= total;
+          if (offset < -total / 2) offset += total;
+
+          if (offset === 0) {
+            // Active Center Card (in full focus)
+            card.classList.add('is-active');
+            card.style.transform = 'translate3d(0, 0, 0) scale(1)';
+            card.style.zIndex = '10';
+            card.style.opacity = '1';
+            card.style.filter = 'brightness(1)';
+            card.style.pointerEvents = 'auto';
+            card.style.cursor = 'default';
+          } else if (offset === -1) {
+            // Left Card (visible behind left)
+            card.classList.remove('is-active');
+            card.style.transform = 'translate3d(-46%, 0, -60px) scale(0.85)';
+            card.style.zIndex = '5';
+            card.style.opacity = '0.78';
+            card.style.filter = 'brightness(0.55)';
+            card.style.pointerEvents = 'auto';
+            card.style.cursor = 'pointer';
+          } else if (offset === 1) {
+            // Right Card (visible behind right)
+            card.classList.remove('is-active');
+            card.style.transform = 'translate3d(46%, 0, -60px) scale(0.85)';
+            card.style.zIndex = '5';
+            card.style.opacity = '0.78';
+            card.style.filter = 'brightness(0.55)';
+            card.style.pointerEvents = 'auto';
+            card.style.cursor = 'pointer';
+          } else if (offset < -1) {
+            // Far Left Hidden
+            card.classList.remove('is-active');
+            card.style.transform = 'translate3d(-80%, 0, -120px) scale(0.7)';
+            card.style.zIndex = '1';
+            card.style.opacity = '0';
+            card.style.filter = 'brightness(0.3)';
+            card.style.pointerEvents = 'none';
+          } else {
+            // Far Right Hidden
+            card.classList.remove('is-active');
+            card.style.transform = 'translate3d(80%, 0, -120px) scale(0.7)';
+            card.style.zIndex = '1';
+            card.style.opacity = '0';
+            card.style.filter = 'brightness(0.3)';
+            card.style.pointerEvents = 'none';
+          }
+        });
+      }
+
+      function goToSlide(index) {
+        currentIndex = (index + cards.length) % cards.length;
+        updateCards();
+      }
+
+      function nextSlide() {
+        goToSlide(currentIndex + 1);
+      }
+
+      function prevSlide() {
+        goToSlide(currentIndex - 1);
+      }
+
+      if (prevBtn) prevBtn.addEventListener('click', () => {
+        prevSlide();
+        resetAutoPlay();
+      });
+
+      if (nextBtn) nextBtn.addEventListener('click', () => {
+        nextSlide();
+        resetAutoPlay();
+      });
+
+      cards.forEach((card, idx) => {
+        card.addEventListener('click', (e) => {
+          if (e.target.closest('.services_card_btn')) return;
+          if (idx !== currentIndex) {
+            goToSlide(idx);
+            resetAutoPlay();
+          }
+        });
+      });
+
+      // Keyboard navigation when in viewport
+      document.addEventListener('keydown', (e) => {
+        const rect = stage.getBoundingClientRect();
+        const isInView = rect.top < window.innerHeight && rect.bottom > 0;
+        if (isInView) {
+          if (e.key === 'ArrowLeft') {
+            prevSlide();
+            resetAutoPlay();
+          } else if (e.key === 'ArrowRight') {
+            nextSlide();
+            resetAutoPlay();
+          }
+        }
+      });
+
+      // Touch / Swipe
+      let touchStartX = 0;
+      let touchEndX = 0;
+
+      stage.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+      }, { passive: true });
+
+      stage.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+      }, { passive: true });
+
+      function handleSwipe() {
+        const swipeThreshold = 50;
+        if (touchEndX < touchStartX - swipeThreshold) {
+          nextSlide();
+          resetAutoPlay();
+        } else if (touchEndX > touchStartX + swipeThreshold) {
+          prevSlide();
+          resetAutoPlay();
+        }
+      }
+
+      // Auto Play
+      function startAutoPlay() {
+        if (autoPlayTimer) clearInterval(autoPlayTimer);
+        autoPlayTimer = setInterval(() => {
+          if (!isHovered) {
+            nextSlide();
+          }
+        }, 5000);
+      }
+
+      function resetAutoPlay() {
+        startAutoPlay();
+      }
+
+      stage.addEventListener('mouseenter', () => { isHovered = true; });
+      stage.addEventListener('mouseleave', () => { isHovered = false; });
+
+      // Init
+      updateCards();
+      startAutoPlay();
     })();
   </script>
   <script type="module"
