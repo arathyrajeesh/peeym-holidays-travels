@@ -2989,6 +2989,363 @@ a,
             padding: 1.5rem 1.25rem;
           }
         }
+
+        /* ---------------------------------------------------- */
+        /* Animated Ken-Burns Hero Slideshow Section            */
+        /* ---------------------------------------------------- */
+        .section_hero_slideshow {
+          position: relative;
+          width: 100%;
+          min-height: 100vh;
+          height: 100vh;
+          overflow: hidden;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-family: 'Plus Jakarta Sans', 'Montserrat', -apple-system, sans-serif;
+          background: #0B1120;
+        }
+
+        .hero_topbar {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          z-index: 120;
+          background: rgba(11, 17, 32, 0.65);
+          backdrop-filter: blur(10px);
+          -webkit-backdrop-filter: blur(10px);
+          border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+          padding: 0.5rem 2rem;
+          font-size: 0.84rem;
+          color: rgba(255, 255, 255, 0.85);
+        }
+
+        .hero_topbar_container {
+          max-width: 1380px;
+          margin: 0 auto;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          flex-wrap: wrap;
+          gap: 1rem;
+        }
+
+        .hero_topbar_left {
+          display: flex;
+          align-items: center;
+          gap: 1.25rem;
+          flex-wrap: wrap;
+        }
+
+        .hero_topbar_item {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.45rem;
+          color: rgba(255, 255, 255, 0.9);
+          text-decoration: none;
+          font-weight: 500;
+          transition: color 0.2s ease;
+        }
+
+        .hero_topbar_item:hover {
+          color: #FF6B00;
+        }
+
+        .hero_topbar_divider {
+          color: rgba(255, 255, 255, 0.25);
+        }
+
+        .hero_topbar_right {
+          display: flex;
+          align-items: center;
+          gap: 0.85rem;
+        }
+
+        .hero_topbar_social {
+          color: rgba(255, 255, 255, 0.8);
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: 28px;
+          height: 28px;
+          border-radius: 50%;
+          background: rgba(255, 255, 255, 0.08);
+          transition: all 0.2s ease;
+          text-decoration: none;
+        }
+
+        .hero_topbar_social:hover {
+          background: #FF6B00;
+          color: #FFFFFF;
+          transform: translateY(-2px);
+        }
+
+        /* Slideshow track & slides */
+        .hero_slideshow_track {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          z-index: 1;
+        }
+
+        .hero_slide {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          opacity: 0;
+          visibility: hidden;
+          transition: opacity 1.4s cubic-bezier(0.4, 0, 0.2, 1), visibility 1.4s ease;
+          overflow: hidden;
+        }
+
+        .hero_slide.is-active {
+          opacity: 1;
+          visibility: visible;
+          z-index: 2;
+        }
+
+        .hero_slide_img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transform: scale(1.12);
+          transition: transform 7.5s ease-out;
+        }
+
+        .hero_slide.is-active .hero_slide_img {
+          transform: scale(1.0);
+        }
+
+        .hero_slideshow_overlay {
+          position: absolute;
+          inset: 0;
+          z-index: 3;
+          background: radial-gradient(circle at center, rgba(15, 23, 42, 0.15) 0%, rgba(15, 23, 42, 0.55) 100%),
+                      linear-gradient(180deg, rgba(15, 23, 42, 0.45) 0%, rgba(15, 23, 42, 0.1) 40%, rgba(15, 23, 42, 0.7) 100%);
+          pointer-events: none;
+        }
+
+        /* Hero Center Content */
+        .hero_center_content {
+          position: relative;
+          z-index: 10;
+          text-align: center;
+          max-width: 960px;
+          padding: 0 1.5rem;
+          margin-top: 3.5rem;
+        }
+
+        .hero_anim_subtitle {
+          font-size: clamp(1.05rem, 1.8vw, 1.35rem);
+          color: #FFFFFF;
+          font-weight: 500;
+          letter-spacing: 0.04em;
+          margin-bottom: 1rem;
+          text-shadow: 0 2px 10px rgba(0, 0, 0, 0.6);
+          animation: heroFadeDown 1s cubic-bezier(0.16, 1, 0.3, 1) both;
+        }
+
+        .hero_anim_title {
+          font-size: clamp(2.4rem, 5.8vw, 4.4rem);
+          font-weight: 800;
+          color: #FFFFFF;
+          line-height: 1.15;
+          letter-spacing: -0.02em;
+          margin: 0 0 2.2rem 0;
+          text-shadow: 0 4px 24px rgba(0, 0, 0, 0.65);
+          animation: heroFadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
+        }
+
+        .hero_brand_name {
+          color: #FFFFFF;
+          position: relative;
+        }
+
+        .hero_anim_btn_wrap {
+          animation: heroFadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
+        }
+
+        .hero_book_travel_btn {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          background: #FF4A39;
+          color: #FFFFFF !important;
+          font-weight: 700;
+          font-size: 1.12rem;
+          letter-spacing: 0.02em;
+          padding: 0.95rem 2.5rem;
+          border-radius: 999px;
+          text-decoration: none;
+          box-shadow: 0 10px 28px rgba(255, 74, 57, 0.45);
+          transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+          border: 1.5px solid rgba(255, 255, 255, 0.25);
+        }
+
+        .hero_book_travel_btn:hover {
+          background: #E03828;
+          transform: translateY(-3px) scale(1.03);
+          box-shadow: 0 16px 36px rgba(255, 74, 57, 0.6);
+          color: #FFFFFF !important;
+        }
+
+        /* Right Side Vertical Navigation Arrows */
+        .hero_side_nav {
+          position: absolute;
+          right: 2.2rem;
+          top: 50%;
+          transform: translateY(-50%);
+          z-index: 12;
+          display: flex;
+          flex-direction: column;
+          gap: 0.9rem;
+        }
+
+        .hero_nav_btn {
+          width: 44px;
+          height: 44px;
+          border-radius: 50%;
+          background: rgba(255, 255, 255, 0.22);
+          backdrop-filter: blur(10px);
+          -webkit-backdrop-filter: blur(10px);
+          border: 1.5px solid rgba(255, 255, 255, 0.45);
+          color: #FFFFFF;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          transition: all 0.25s ease;
+          padding: 0;
+        }
+
+        .hero_nav_btn:hover {
+          background: #FF4A39;
+          border-color: #FF4A39;
+          transform: scale(1.12);
+          box-shadow: 0 8px 20px rgba(255, 74, 57, 0.45);
+        }
+
+        /* Slide Dots */
+        .hero_dots_wrap {
+          position: absolute;
+          bottom: 2rem;
+          left: 50%;
+          transform: translateX(-50%);
+          z-index: 12;
+          display: flex;
+          align-items: center;
+          gap: 0.6rem;
+        }
+
+        .hero_dot {
+          width: 10px;
+          height: 10px;
+          border-radius: 50%;
+          background: rgba(255, 255, 255, 0.4);
+          border: none;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          padding: 0;
+        }
+
+        .hero_dot.is-active {
+          width: 28px;
+          border-radius: 12px;
+          background: #FF4A39;
+          box-shadow: 0 0 10px rgba(255, 74, 57, 0.6);
+        }
+
+        /* Floating Quick Action Buttons */
+        .hero_floating_actions {
+          position: absolute;
+          bottom: 2rem;
+          left: 2rem;
+          z-index: 15;
+          display: flex;
+          flex-direction: column;
+          gap: 0.75rem;
+        }
+
+        .hero_float_btn {
+          width: 46px;
+          height: 46px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: #FFFFFF;
+          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+          text-decoration: none;
+          transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .hero_float_btn.is-whatsapp {
+          background: #25D366;
+        }
+
+        .hero_float_btn.is-phone {
+          background: #FF4A39;
+        }
+
+        .hero_float_btn:hover {
+          transform: scale(1.1) translateY(-2px);
+          box-shadow: 0 12px 24px rgba(0, 0, 0, 0.45);
+        }
+
+        .hero_float_chat {
+          position: absolute;
+          bottom: 2rem;
+          right: 2rem;
+          z-index: 15;
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          background: #FF4A39;
+          color: #FFFFFF;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          box-shadow: 0 8px 24px rgba(255, 74, 57, 0.5);
+          text-decoration: none;
+          transition: all 0.25s ease;
+        }
+
+        .hero_float_chat:hover {
+          transform: scale(1.1) translateY(-2px);
+          box-shadow: 0 12px 28px rgba(255, 74, 57, 0.65);
+        }
+
+        @keyframes heroFadeDown {
+          from { opacity: 0; transform: translateY(-20px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes heroFadeUp {
+          from { opacity: 0; transform: translateY(25px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 767px) {
+          .hero_topbar {
+            display: none;
+          }
+          .hero_side_nav {
+            display: none;
+          }
+          .hero_floating_actions {
+            bottom: 1.25rem;
+            left: 1.25rem;
+          }
+          .hero_float_chat {
+            bottom: 1.25rem;
+            right: 1.25rem;
+          }
+        }
       </style>
     </div>
     <div data-w-id="7c2f5785-5165-eb9b-72a5-6b0ca932720f" data-animation="default" data-collapse="medium"
@@ -3057,28 +3414,119 @@ a,
       </div>
     </div>
     <main class="main-wrapper">
-      <div data-nav="dark" data-w-id="1fa5ba92-a1bd-e5f4-b69d-c408a10dc1d5" class="section_hero">
-        <div class="padding-0">
-          <div class="container-max">
-            <div class="hero_content-wrapper">
-              <div class="hero_sticky">
-                <div class="hero_content">
-                  <div class="hero_bg"><img class="hero_bg-img is-bottom"
-                      src="https://cdn.prod.website-files.com/697797a5e8e563920247d163/698a4b36aa753bdfe16581c7_hero-bottom.avif"
-                      width="1609" height="1296" alt="" sizes="100vw" fetchpriority="high"
-                      srcset="https://cdn.prod.website-files.com/697797a5e8e563920247d163/698a4b36aa753bdfe16581c7_hero-bottom-p-500.png 500w, https://cdn.prod.website-files.com/697797a5e8e563920247d163/698a4b36aa753bdfe16581c7_hero-bottom-p-800.png 800w, https://cdn.prod.website-files.com/697797a5e8e563920247d163/698a4b36aa753bdfe16581c7_hero-bottom.avif 4000w" /><img
-                      src="https://cdn.prod.website-files.com/697797a5e8e563920247d163/698a4b35bf06676881054d29_hero-top.avif"
-                      loading="lazy" width="1609" height="1296" alt=""
-                      srcset="https://cdn.prod.website-files.com/697797a5e8e563920247d163/698a4b35bf06676881054d29_hero-top-p-500.avif 500w, https://cdn.prod.website-files.com/697797a5e8e563920247d163/698a4b35bf06676881054d29_hero-top-p-800.avif 800w, https://cdn.prod.website-files.com/697797a5e8e563920247d163/698a4b35bf06676881054d29_hero-top-p-1080.avif 1080w, https://cdn.prod.website-files.com/697797a5e8e563920247d163/698a4b35bf06676881054d29_hero-top-p-1600.avif 1600w, https://cdn.prod.website-files.com/697797a5e8e563920247d163/698a4b35bf06676881054d29_hero-top-p-2000.avif 2000w, https://cdn.prod.website-files.com/697797a5e8e563920247d163/698a4b35bf06676881054d29_hero-top.avif 4000w"
-                      sizes="100vw" class="hero_bg-img is-top" /></div>
-                  <div class="hero_content_text"></div>
-
-                </div>
-              </div>
+      <!-- Dynamic Animated Hero Section (Ken Burns Slideshow) -->
+      <section class="section_hero_slideshow" id="homeHero" data-nav="dark">
+        <!-- Top Contact Bar matching screenshot -->
+        <div class="hero_topbar">
+          <div class="hero_topbar_container">
+            <div class="hero_topbar_left">
+              <a href="tel:+919562922974" class="hero_topbar_item">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+                  <path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1.02l-2.2 2.2z"/>
+                </svg>
+                <span>+91 95629 22974</span>
+              </a>
+              <span class="hero_topbar_divider">|</span>
+              <a href="tel:+919207922974" class="hero_topbar_item">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+                  <path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1.02l-2.2 2.2z"/>
+                </svg>
+                <span>+91 92079 22974</span>
+              </a>
+              <span class="hero_topbar_divider">|</span>
+              <a href="mailto:info@peeyemholidays.com" class="hero_topbar_item">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
+                  <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                </svg>
+                <span>info@peeyemholidays.com</span>
+              </a>
+            </div>
+            <div class="hero_topbar_right">
+              <a href="https://www.instagram.com/peeyemholidays/?hl=en" target="_blank" rel="noopener" aria-label="Instagram" class="hero_topbar_social">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+              </a>
+              <a href="https://wa.me/919562922974" target="_blank" rel="noopener" aria-label="WhatsApp" class="hero_topbar_social">
+                <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.634.07-1.733-.387-1.401-.58-2.296-2.007-2.366-2.099-.07-.092-.563-.75-.563-1.428 0-.677.356-.99.48-.112.124-.122.27-.153.361-.153.09 0 .18.001.258.007.083.007.194-.031.303.23.113.272.385.941.42 1.01.035.07.058.152.012.244-.047.091-.07.147-.139.227-.07.08-.146.178-.209.24-.07.07-.143.146-.061.286.082.14 366.604 1.077 1.238.455.405.837.531.977.589.14.058.223.048.305-.046.083-.094.356-.413.45-.555.094-.141.189-.118.318-.07.129.047.818.386.958.456.14.07.234.105.268.163.035.058.035.337-.109.742zM12 2C6.477 2 2 6.477 2 12c0 1.891.524 3.66 1.434 5.176L2 22l4.957-1.399C8.423 21.493 10.153 22 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg>
+              </a>
             </div>
           </div>
         </div>
-      </div>
+
+        <!-- Animated Background Slides -->
+        <div class="hero_slideshow_track" id="heroTrack">
+          <!-- Slide 1: home.png -->
+          <div class="hero_slide is-active">
+            <img src="assets/home.png" alt="Explore World with Peeyem Holidays" class="hero_slide_img" />
+          </div>
+          <!-- Slide 2: home1.png -->
+          <div class="hero_slide">
+            <img src="assets/home1.png" alt="Travel Destination Peeyem Holidays" class="hero_slide_img" />
+          </div>
+          <!-- Slide 3: home2.png -->
+          <div class="hero_slide">
+            <img src="assets/home2.png" alt="Scenic Tours Peeyem Holidays" class="hero_slide_img" />
+          </div>
+          <!-- Slide 4: home3.png -->
+          <div class="hero_slide">
+            <img src="assets/home3.png" alt="Explore Destinations Peeyem Holidays" class="hero_slide_img" />
+          </div>
+        </div>
+
+        <!-- Gradient & Vignette Overlay -->
+        <div class="hero_slideshow_overlay"></div>
+
+        <!-- Center Hero Text Content (Exact Screenshot Match) -->
+        <div class="hero_center_content">
+          <div class="hero_anim_subtitle">Let's Travel World With Us</div>
+          <h1 class="hero_anim_title">Explore World with<br><span class="hero_brand_name">Peeyem Holidays</span></h1>
+          <div class="hero_anim_btn_wrap">
+            <a href="#Contact-Form" class="hero_book_travel_btn">
+              <span>Book Your Travel</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right Side Vertical Navigation Arrows (Matching Screenshot) -->
+        <div class="hero_side_nav">
+          <button class="hero_nav_btn" id="heroPrevBtn" aria-label="Previous Slide">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="18 15 12 9 6 15"></polyline>
+            </svg>
+          </button>
+          <button class="hero_nav_btn" id="heroNextBtn" aria-label="Next Slide">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Slide Indicators / Dots -->
+        <div class="hero_dots_wrap" id="heroDots">
+          <button class="hero_dot is-active" data-slide="0" aria-label="Slide 1"></button>
+          <button class="hero_dot" data-slide="1" aria-label="Slide 2"></button>
+          <button class="hero_dot" data-slide="2" aria-label="Slide 3"></button>
+          <button class="hero_dot" data-slide="3" aria-label="Slide 4"></button>
+        </div>
+
+        <!-- Floating Quick Action Buttons (Matching Screenshot) -->
+        <div class="hero_floating_actions">
+          <a href="https://wa.me/919562922974" target="_blank" rel="noopener" class="hero_float_btn is-whatsapp" aria-label="Chat on WhatsApp">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+              <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.634.07-1.733-.387-1.401-.58-2.296-2.007-2.366-2.099-.07-.092-.563-.75-.563-1.428 0-.677.356-.99.48-.112.124-.122.27-.153.361-.153.09 0 .18.001.258.007.083.007.194-.031.303.23.113.272.385.941.42 1.01.035.07.058.152.012.244-.047.091-.07.147-.139.227-.07.08-.146.178-.209.24-.07.07-.143.146-.061.286.082.14 366.604 1.077 1.238.455.405.837.531.977.589.14.058.223.048.305-.046.083-.094.356-.413.45-.555.094-.141.189-.118.318-.07.129.047.818.386.958.456.14.07.234.105.268.163.035.058.035.337-.109.742zM12 2C6.477 2 2 6.477 2 12c0 1.891.524 3.66 1.434 5.176L2 22l4.957-1.399C8.423 21.493 10.153 22 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/>
+            </svg>
+          </a>
+          <a href="tel:+919562922974" class="hero_float_btn is-phone" aria-label="Call Us">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+              <path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1.02l-2.2 2.2z"/>
+            </svg>
+          </a>
+        </div>
+        <a href="#Contact-Form" class="hero_float_chat" aria-label="Contact Us">
+          <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+            <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/>
+          </svg>
+        </a>
+      </section>
       <!-- Our Services 3D Coverflow Carousel Section -->
       <section id="services" class="section_services_carousel" data-nav="white">
         <div class="services_carousel_header">
@@ -4854,6 +5302,101 @@ a,
       // Init
       updateCards();
       startAutoPlay();
+    })();
+
+    // Animated Hero Ken Burns Slideshow Controller
+    (function initHeroSlideshow() {
+      const slides = document.querySelectorAll('.hero_slide');
+      const dots = document.querySelectorAll('.hero_dot');
+      const prevBtn = document.getElementById('heroPrevBtn');
+      const nextBtn = document.getElementById('heroNextBtn');
+      if (!slides.length) return;
+
+      let currentIndex = 0;
+      let slideInterval = null;
+
+      function showSlide(index) {
+        if (index < 0) index = slides.length - 1;
+        if (index >= slides.length) index = 0;
+        currentIndex = index;
+
+        slides.forEach((slide, i) => {
+          if (i === currentIndex) {
+            slide.classList.add('is-active');
+          } else {
+            slide.classList.remove('is-active');
+          }
+        });
+
+        dots.forEach((dot, i) => {
+          if (i === currentIndex) {
+            dot.classList.add('is-active');
+          } else {
+            dot.classList.remove('is-active');
+          }
+        });
+      }
+
+      function nextSlide() {
+        showSlide(currentIndex + 1);
+      }
+
+      function prevSlide() {
+        showSlide(currentIndex - 1);
+      }
+
+      function startTimer() {
+        if (slideInterval) clearInterval(slideInterval);
+        slideInterval = setInterval(nextSlide, 5000);
+      }
+
+      function resetTimer() {
+        startTimer();
+      }
+
+      if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+          nextSlide();
+          resetTimer();
+        });
+      }
+
+      if (prevBtn) {
+        prevBtn.addEventListener('click', () => {
+          prevSlide();
+          resetTimer();
+        });
+      }
+
+      dots.forEach((dot) => {
+        dot.addEventListener('click', () => {
+          const idx = parseInt(dot.getAttribute('data-slide'), 10);
+          showSlide(idx);
+          resetTimer();
+        });
+      });
+
+      // Swipe support
+      const heroSec = document.getElementById('homeHero');
+      if (heroSec) {
+        let touchStartX = 0;
+        let touchEndX = 0;
+        heroSec.addEventListener('touchstart', (e) => {
+          touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+        heroSec.addEventListener('touchend', (e) => {
+          touchEndX = e.changedTouches[0].screenX;
+          if (touchEndX < touchStartX - 50) {
+            nextSlide();
+            resetTimer();
+          } else if (touchEndX > touchStartX + 50) {
+            prevSlide();
+            resetTimer();
+          }
+        }, { passive: true });
+      }
+
+      startTimer();
     })();
   </script>
   <script type="module"
