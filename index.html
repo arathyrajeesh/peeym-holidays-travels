@@ -3294,7 +3294,7 @@ a,
     </div>
     <main class="main-wrapper">
       <!-- Dynamic Animated Hero Section (Ken Burns Slideshow) -->
-      <section class="section_hero_slideshow" id="homeHero" data-nav="dark">
+      <section class="section_hero_slideshow" id="homeHero" data-nav="white">
         <!-- Animated Background Slides -->
         <div class="hero_slideshow_track" id="heroTrack">
           <!-- Slide 1: home.png -->
@@ -3356,7 +3356,7 @@ a,
 
       </section>
       <!-- Our Services 3D Coverflow Carousel Section -->
-      <section id="services" class="section_services_carousel" data-nav="white">
+      <section id="services" class="section_services_carousel" data-nav="dark">
         <div class="services_carousel_header">
           <h2 class="services_carousel_title">Our <span>Services</span></h2>
           <p class="services_carousel_subtitle">Comprehensive travel solutions tailored to meet your every need</p>
@@ -4349,8 +4349,8 @@ a,
       root.style.setProperty('--nav--border', borderColor);
     }
 
-    // Set initial theme to dark text (for top hero)
-    applyNavTheme('dark');
+    // Set initial theme to white text (for top hero with dark image background)
+    applyNavTheme('white');
 
     // Create ScrollTriggers for every section with data-nav
     document.querySelectorAll('[data-nav]').forEach(section => {
@@ -4371,9 +4371,9 @@ a,
       const windowHeight = window.innerHeight;
       const docHeight = document.documentElement.scrollHeight;
 
-      // Top of page (< 120px): ALWAYS dark text on light hero
+      // Top of page (< 120px): ALWAYS white text on dark hero image
       if (scrollY < 120) {
-        applyNavTheme('dark');
+        applyNavTheme('white');
         return;
       }
 
